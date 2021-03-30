@@ -11,6 +11,7 @@ using System.IO;
 using System.Net;
 using System.Net.Mail;
 using MyVideo;
+using System.Text.RegularExpressions;
 
 
 // Window size: 816, 489
@@ -578,7 +579,7 @@ namespace Store
             }
             tempString += lblScore.Text + "," + playerName;
             string[] tempArray = tempString.Split(';');
-            Array.Sort(tempArray);
+            Array.Sort(tempArray, (a, b) => int.Parse(0 + Regex.Replace(a, ",.+", "")) - int.Parse(0 + Regex.Replace(b, ",.+", "")));
             Array.Reverse(tempArray);
 
             // Max of 8 entries
